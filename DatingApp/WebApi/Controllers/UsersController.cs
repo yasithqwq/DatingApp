@@ -11,10 +11,7 @@ using WebApi.Entities;
 
 namespace WebApi.Controllers
 {
-
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
 
@@ -32,6 +29,7 @@ namespace WebApi.Controllers
             return users;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {
